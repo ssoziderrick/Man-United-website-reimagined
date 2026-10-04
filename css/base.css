@@ -1,0 +1,33 @@
+/* ============================================================
+   base.css - SHARED STYLES. Only the lead edits this file.
+   Need a change? Ask the lead (open an Issue on GitHub).
+   ============================================================ */
+:root{
+  --red:#DA291C;
+  --red-dark:#a81f15;
+  --black:#111111;
+  --gold:#FBE122;
+  --white:#ffffff;
+  --grey:#f4f4f4;
+  --font:'Segoe UI',Arial,sans-serif;
+  --max-width:1100px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);color:var(--black);line-height:1.6;background:var(--white)}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+/* Navigation */
+.site-nav{background:var(--red);display:flex;align-items:center;gap:24px;padding:16px 24px;flex-wrap:wrap}
+.site-nav .brand{color:var(--white);font-weight:800;font-size:1.2rem;margin-right:auto;text-decoration:none}
+.site-nav a{color:var(--white);text-decoration:none;font-weight:600}
+.site-nav a:hover{color:var(--gold)}
+.site-nav a.active{border-bottom:3px solid var(--gold)}
+
+/* Footer */
+.site-footer{background:var(--black);color:var(--white);text-align:center;padding:24px;margin-top:48px;font-size:.9rem}
+
+/* Shared helpers you MAY use in your page */
+.container{max-width:var(--max-width);margin:0 auto;padding:0 20px}
+.btn{display:inline-block;background:var(--red);color:var(--white);padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:600}
+.btn:hover{background:var(--red-dark)}
