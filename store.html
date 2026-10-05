@@ -17,16 +17,71 @@
       <a href="about.html">About Us</a>
       <a href="news.html">News</a>
       <a href="fixtures.html">Fixtures</a>
-      <a href="store.html">Store</a>
+      <a href="store.html" class="active">Store</a>
       <a href="gallery.html">Gallery</a>
     </nav>
   </header>
   <!-- ===== END NAV ===== -->
 
   <!-- ===== YOUR PAGE STARTS HERE ===== -->
-  <main class="container">
-    <h1>Store</h1>
-    <p>TODO: replace this with your own design.</p>
+  <main class="store">
+
+    <!-- 1. Hero -->
+    <section class="store-hero">
+      <div class="container hero-inner">
+        <div>
+          <p class="eyebrow">The Megastore · Practice Edition</p>
+          <h1>Wear the <span>Red</span> Devils</h1>
+          <p class="hero-text">Kits, scarves and match-day gear. Use code <strong>RED10</strong> for 10% off.</p>
+          <a href="#grid" class="btn btn-gold">Shop now</a>
+        </div>
+        <div class="hero-ball" aria-hidden="true">⚽</div>
+      </div>
+    </section>
+
+    <!-- 2. Promo strip -->
+    <div class="promo">🚚 Free delivery over $100 &nbsp;•&nbsp; 🔥 Retro 1999 shirt is back &nbsp;•&nbsp; 🎁 Kids range now live</div>
+
+    <!-- 3. Toolbar: filters, search, sort -->
+    <section class="container toolbar">
+      <div class="filters" id="filters">
+        <button class="pill active" data-cat="all">All</button>
+        <button class="pill" data-cat="Kits">Kits</button>
+        <button class="pill" data-cat="Accessories">Accessories</button>
+        <button class="pill" data-cat="Kids">Kids</button>
+      </div>
+      <input id="search" type="search" placeholder="Search products...">
+      <select id="sort" aria-label="Sort products">
+        <option value="featured">Featured</option>
+        <option value="low">Price: low to high</option>
+        <option value="high">Price: high to low</option>
+        <option value="az">Name: A to Z</option>
+      </select>
+    </section>
+
+    <!-- 4. Product grid (filled by js/store.js) -->
+    <section class="container">
+      <p class="count" id="count"></p>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <!-- 5. Basket button + drawer -->
+    <button class="cart-fab" id="cartBtn" aria-label="Open basket">🛒 <span id="cartCount">0</span></button>
+    <div class="overlay" id="overlay"></div>
+    <aside class="drawer" id="drawer" aria-label="Basket">
+      <div class="drawer-head"><h2>Your Basket</h2><button id="closeCart" aria-label="Close basket">✕</button></div>
+      <div class="drawer-items" id="cartItems"></div>
+      <div class="drawer-foot">
+        <div class="promo-row"><input id="promo" placeholder="Promo code"><button class="btn small" id="applyPromo">Apply</button></div>
+        <div class="row"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+        <div class="row" id="discountRow" hidden><span>Discount (RED10)</span><span id="discount">-$0.00</span></div>
+        <div class="row total"><span>Total</span><span id="total">$0.00</span></div>
+        <button class="btn full" id="checkout">Checkout</button>
+        <button class="link" id="clearCart">Clear basket</button>
+      </div>
+    </aside>
+    <div class="toast" id="toast" role="status"></div>
+
   </main>
   <!-- ===== YOUR PAGE ENDS HERE ===== -->
 
