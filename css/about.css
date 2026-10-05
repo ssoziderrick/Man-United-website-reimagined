@@ -1,1 +1,974 @@
-/* About Us page styles - owned by the person assigned in README.md */
+/* 1. Ensure the layout fills the full viewport height */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* 2. Make the main content area grow to fill available space */
+main, .container {
+  flex: 1 0 auto;
+}
+
+/* 3. Keep footer at the bottom */
+.site-footer {
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   MANCHESTER UNITED - ABOUT PAGE
+   about.css
+========================================================= */
+
+
+/* =========================================================
+   GENERAL PAGE STYLES
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+    background: #ffffff;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+button {
+    font-family: inherit;
+}
+
+.container {
+    padding: 0;
+}
+
+.container > h1 {
+    display: none;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.header {
+    background: #c8102e;
+    color: white;
+    padding: 22px 8%;
+    border-bottom: 4px solid #9b0b23;
+}
+
+.header .logo {
+    display: flex;
+    align-items: center;
+}
+
+.header .logo h2 {
+    margin: 0;
+    font-size: 25px;
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   HERO SECTION
+========================================================= */
+
+.hero {
+    min-height: 520px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    color: white;
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.65),
+            rgba(0, 0, 0, 0.65)
+        ),
+        url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGxetVOu1TYHpfPLUbGl-ea2Au3HX1bqZFUEmTirQTdg&s=10");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-overlay {
+    max-width: 900px;
+    padding: 40px 25px;
+}
+
+.small-title {
+    margin: 0 0 12px;
+
+    color: #c8102e;
+
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 4px;
+}
+
+.hero .small-title {
+    color: #ffffff;
+}
+
+.hero h1 {
+    margin: 0 0 20px;
+
+    font-size: clamp(42px, 6vw, 75px);
+    line-height: 1.05;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hero p:last-child {
+    max-width: 700px;
+    margin: 0 auto;
+
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   COMMON SECTION STYLES
+========================================================= */
+
+.section {
+    padding: 90px 8%;
+}
+
+.section-heading {
+    max-width: 900px;
+    margin: 0 auto 55px;
+    text-align: center;
+}
+
+.section-heading p {
+    margin: 0 0 10px;
+
+    color: #c8102e;
+
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 4px;
+}
+
+.section-heading h2 {
+    margin: 0;
+
+    font-size: clamp(30px, 4vw, 46px);
+    line-height: 1.15;
+
+    color: #171717;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   INTRODUCTION
+========================================================= */
+
+.intro {
+    background: #f5f5f5;
+}
+
+.intro-content {
+    max-width: 1100px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 50px;
+
+    align-items: stretch;
+}
+
+.intro-content > div:first-child {
+    padding: 10px 0;
+}
+
+.intro-content > div:first-child p {
+    margin: 0 0 22px;
+
+    font-size: 17px;
+    line-height: 1.9;
+    color: #555;
+}
+
+.intro-highlight {
+    padding: 40px;
+
+    background: #c8102e;
+    color: white;
+
+    border-left: 7px solid #171717;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.intro-highlight h3 {
+    margin: 0 0 15px;
+
+    font-size: 30px;
+}
+
+.intro-highlight p {
+    margin: 0;
+
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   HISTORY TIMELINE
+========================================================= */
+
+.history {
+    background: #ffffff;
+}
+
+.timeline {
+    max-width: 1000px;
+    margin: 0 auto;
+
+    position: relative;
+}
+
+/* Vertical centre line */
+
+.timeline::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+    left: 50%;
+
+    width: 4px;
+
+    background: #c8102e;
+
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    width: 50%;
+
+    padding: 15px 45px 40px;
+
+    position: relative;
+
+    opacity: 0;
+    transform: translateY(30px);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+}
+
+/* JavaScript adds this class */
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Left side */
+
+.timeline-item:nth-child(odd) {
+    margin-left: 0;
+    text-align: right;
+}
+
+/* Right side */
+
+.timeline-item:nth-child(even) {
+    margin-left: 50%;
+    text-align: left;
+}
+
+/* Year */
+
+.timeline-year {
+    display: inline-block;
+
+    padding: 8px 18px;
+
+    background: #c8102e;
+    color: white;
+
+    font-size: 21px;
+    font-weight: 700;
+
+    border-radius: 3px;
+}
+
+/* Timeline card */
+
+.timeline-content {
+    margin-top: 15px;
+    padding: 25px;
+
+    background: #f5f5f5;
+
+    border-top: 4px solid #c8102e;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.timeline-content h3 {
+    margin: 0 0 10px;
+
+    font-size: 23px;
+    color: #171717;
+}
+
+.timeline-content p {
+    margin: 0;
+
+    color: #555;
+    line-height: 1.7;
+}
+
+/* Timeline button */
+
+.timeline-btn {
+    margin-top: 14px;
+
+    padding: 10px 20px;
+
+    border: none;
+    border-radius: 2px;
+
+    background: #171717;
+    color: white;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+.timeline-btn:hover {
+    background: #c8102e;
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   OLD TRAFFORD
+========================================================= */
+
+.stadium {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 60px;
+
+    align-items: center;
+
+    background: #151515;
+    color: white;
+}
+
+.stadium-image {
+    overflow: hidden;
+}
+
+.stadium-image img {
+    width: 100%;
+    height: 500px;
+
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+}
+
+.stadium-image:hover img {
+    transform: scale(1.04);
+}
+
+.stadium-info .small-title {
+    color: #e31b23;
+}
+
+.stadium-info h2 {
+    margin: 0 0 20px;
+
+    font-size: clamp(40px, 5vw, 60px);
+    line-height: 1;
+
+    text-transform: uppercase;
+}
+
+.stadium-info > p:not(.small-title) {
+    margin-bottom: 30px;
+
+    color: #cccccc;
+
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+
+/* Stadium facts */
+
+.stadium-facts {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin: 30px 0;
+}
+
+.fact {
+    padding: 20px 15px;
+
+    border-top: 2px solid #c8102e;
+
+    background: #202020;
+}
+
+.fact h3 {
+    margin: 0 0 8px;
+
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.fact p {
+    margin: 0;
+
+    color: #aaa;
+
+    font-size: 13px;
+}
+
+
+/* Did you know */
+
+.did-you-know {
+    margin-top: 30px;
+
+    padding: 25px;
+
+    background: #c8102e;
+
+    border-left: 5px solid white;
+}
+
+.did-you-know h3 {
+    margin: 0 0 8px;
+
+    font-size: 20px;
+}
+
+.did-you-know p {
+    margin: 0;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   LEGENDS
+========================================================= */
+
+.legends {
+    background: #f5f5f5;
+}
+
+.legend-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.legend-card {
+    overflow: hidden;
+
+    background: white;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.legend-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.15);
+}
+
+.legend-card img {
+    width: 100%;
+    height: 290px;
+
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+}
+
+.legend-card:hover img {
+    transform: scale(1.05);
+}
+
+.legend-info {
+    padding: 25px;
+}
+
+.legend-info h3 {
+    margin: 0 0 5px;
+
+    font-size: 24px;
+    color: #171717;
+}
+
+.legend-info span {
+    color: #c8102e;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.legend-info p {
+    margin: 15px 0 0;
+
+    color: #555;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   MANAGERS
+========================================================= */
+
+.managers {
+    background: white;
+}
+
+.manager-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 30px;
+}
+
+.manager-card {
+    padding: 40px;
+
+    background: #171717;
+    color: white;
+
+    border-bottom: 5px solid #c8102e;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+.manager-card:hover {
+    transform: translateY(-6px);
+
+    background: #202020;
+}
+
+.manager-card h3 {
+    margin: 0 0 15px;
+
+    color: #c8102e;
+
+    font-size: 28px;
+}
+
+.manager-card p {
+    margin: 0;
+
+    color: #ccc;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   HONOURS TABLE
+========================================================= */
+
+.honours {
+    background: #f5f5f5;
+}
+
+.table-container {
+    max-width: 900px;
+    margin: 0 auto;
+
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background: white;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+th,
+td {
+    padding: 18px 22px;
+
+    text-align: left;
+
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: #c8102e;
+    color: white;
+
+    font-size: 14px;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+td {
+    color: #444;
+}
+
+tbody tr {
+    transition: background 0.2s ease;
+}
+
+tbody tr:hover {
+    background: #fcebed;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   VALUES
+========================================================= */
+
+.values {
+    background: white;
+}
+
+.values-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+.value-card {
+    min-height: 250px;
+
+    padding: 30px;
+
+    background: white;
+
+    border: 1px solid #ddd;
+    border-top: 5px solid #c8102e;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-8px);
+
+    background: #c8102e;
+    color: white;
+}
+
+.value-number {
+    margin-bottom: 20px;
+
+    color: #c8102e;
+
+    font-size: 35px;
+    font-weight: 700;
+}
+
+.value-card:hover .value-number {
+    color: white;
+}
+
+.value-card h3 {
+    margin: 0 0 12px;
+
+    font-size: 24px;
+}
+
+.value-card p {
+    margin: 0;
+
+    color: #555;
+
+    line-height: 1.7;
+}
+
+.value-card:hover p {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   PAGE FOOTER
+========================================================= */
+
+.footer {
+    padding: 60px 8% 25px;
+
+    background: #111;
+    color: white;
+}
+
+.footer-content {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 40px;
+
+    padding-bottom: 35px;
+}
+
+.footer-content h2 {
+    margin: 0 0 10px;
+
+    font-size: 25px;
+}
+
+.footer-content p {
+    margin: 0;
+
+    color: #999;
+}
+
+.footer-links {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 20px;
+}
+
+.footer-links a {
+    color: #ddd;
+
+    font-size: 14px;
+
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #c8102e;
+}
+
+.copyright {
+    margin: 0;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #333;
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .section {
+        padding: 75px 6%;
+    }
+
+    .legend-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stadium {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+    .stadium-image img {
+        height: 450px;
+    }
+}
+
+
+@media (max-width: 750px) {
+
+    .intro-content {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+    .manager-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Turn timeline into one column */
+
+    .timeline::before {
+        left: 10px;
+
+        transform: none;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(even),
+    .timeline-item:nth-child(odd) {
+        width: 100%;
+
+        margin-left: 0;
+
+        padding-left: 40px;
+        padding-right: 0;
+
+        text-align: left;
+    }
+
+    .timeline-year {
+        margin-left: 0;
+    }
+
+    .stadium-facts {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .section {
+        padding: 60px 5%;
+    }
+
+    .hero {
+        min-height: 430px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero p:last-child {
+        font-size: 16px;
+    }
+
+    .legend-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .legend-card img {
+        height: 320px;
+    }
+
+    .stadium-image img {
+        height: 300px;
+    }
+
+    .stadium-info h2 {
+        font-size: 42px;
+    }
+
+    .intro-highlight {
+        padding: 30px;
+    }
+
+    th,
+    td {
+        padding: 14px 15px;
+    }
+}
+
