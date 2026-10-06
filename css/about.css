@@ -423,10 +423,6 @@ button {
     transition: transform 0.5s ease;
 }
 
-.stadium-image:hover img {
-    transform: scale(1.04);
-}
-
 .stadium-info .small-title {
     color: #e31b23;
 }
@@ -542,12 +538,6 @@ button {
         box-shadow 0.35s ease;
 }
 
-.legend-card:hover {
-    transform: translateY(-8px);
-
-    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.15);
-}
-
 .legend-card img {
     width: 100%;
     height: 290px;
@@ -555,10 +545,6 @@ button {
     object-fit: cover;
 
     transition: transform 0.5s ease;
-}
-
-.legend-card:hover img {
-    transform: scale(1.05);
 }
 
 .legend-info {
@@ -618,12 +604,6 @@ button {
     transition:
         transform 0.3s ease,
         background 0.3s ease;
-}
-
-.manager-card:hover {
-    transform: translateY(-6px);
-
-    background: #202020;
 }
 
 .manager-card h3 {
