@@ -12,7 +12,7 @@
   <!-- ===== NAV: DO NOT EDIT (lead only). Copy is identical on every page. ===== -->
   <header>
     <nav class="site-nav">
-      <a class="brand" href="index.html">MUFC</a>
+      <a class="brand" href="index.html">Manchester United</a>
       <a href="index.html">Home</a>
       <a href="about.html">About Us</a>
       <a href="news.html">News</a>
@@ -26,68 +26,263 @@
   <!-- ===== YOUR PAGE STARTS HERE ===== -->
   <main class="store">
 
-    <!-- 1. Hero -->
-    <section class="store-hero">
-      <div class="container hero-inner">
-        <div>
-          <p class="eyebrow">The Megastore · Practice Edition</p>
-          <h1>Wear the <span>Red</span> Devils</h1>
-          <p class="hero-text">Kits, scarves and match-day gear. Use code <strong>RED10</strong> for 10% off.</p>
-          <a href="#grid" class="btn btn-gold">Shop now</a>
+    <!-- 1. Promo bar -->
+    <div class="promo-bar">Up to 75% off in the Sale · Free shipping on qualifying orders</div>
+
+    <!-- 2. Category bar: the buttons filter the products (see js/store.js) -->
+    <div class="category-bar">
+      <div class="container category-inner">
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="new">New In</button>
+          <button class="filter-btn" data-filter="jerseys">Jerseys</button>
+          <button class="filter-btn" data-filter="trainingwear">Trainingwear</button>
+          <button class="filter-btn" data-filter="retro">Retro</button>
+          <button class="filter-btn" data-filter="accessories">Accessories</button>
+          <button class="filter-btn sale-btn" data-filter="sale">Sale</button>
         </div>
-        <div class="hero-ball" aria-hidden="true">⚽</div>
+        <div class="basket">🛒 Basket (<span id="basket-count">0</span>)</div>
+      </div>
+    </div>
+
+    <!-- 3. Hero banner + two small promo tiles -->
+    <section class="container hero-grid">
+      <div class="hero-main">
+        <img src="images/store/hero.jpg" alt="Wear the Legacy">
+        <div class="hero-text">
+          <h1>Wear the Legacy</h1>
+          <p>Discover iconic shirts inspired by football history.</p>
+          <a href="#products" class="btn">Shop now</a>
+        </div>
+      </div>
+      <a href="#products" class="hero-tile"><img src="images/store/tile-sale.jpg" alt="Sale"><span>Sale: up to 75% off</span></a>
+      <a href="#products" class="hero-tile"><img src="images/store/tile-kit.jpg" alt="New home kit"><span>New Home Kit</span></a>
+    </section>
+
+    <!-- 4. Products -->
+    <section class="container" id="products">
+      <div class="section-head">
+        <h2>Trending Now</h2>
+        <p id="result-count">12 products</p>
+      </div>
+      <div class="product-grid">
+        <article class="product jerseys new">
+          <div class="product-img">
+            <span class="badge ">New</span>
+            <button class="heart" aria-label="Save to wishlist">♡</button>
+            <img src="images/store/home-jersey.jpg" alt="Home Jersey">
+          </div>
+          <div class="product-info">
+            <h3>Home Jersey</h3>
+            <p class="rating">★★★★★ <span>4.8</span></p>
+            <p class="price"><span class="now">£85.00</span></p>
+            <button class="add-btn">Add to basket</button>
+          </div>
+        </article>
+
+        <article class="product jerseys sale">
+          <div class="product-img">
+            <span class="badge sale">-30%</span>
+            <button class="heart" aria-label="Save to wishlist">♡</button>
+            <img src="images/store/away-jersey.jpg" alt="Away Jersey">
+          </div>
+          <div class="product-info">
+            <h3>Away Jersey</h3>
+            <p class="rating">★★★★★ <span>4.6</span></p>
+            <p class="price"><span class="now">£56.00</span> <del>£80.00</del></p>
+            <button class="add-btn">Add to basket</button>
+          </div>
+        </article>
+
+        <article class="product jerseys">
+          <div class="product-img">
+            
+            <button class="heart" aria-label="Save to wishlist">♡</button>
+            <img src="images/store/third-jersey.jpg" alt="Third Jersey">
+          </div>
+          <div class="product-info">
+            <h3>Third Jersey</h3>
+            <p class="rating">★★★★★ <span>4.5</span></p>
+            <p class="price"><span class="now">£80.00</span></p>
+            <button class="add-btn">Add to basket</button>
+          </div>
+        </article>
+
+        <article class="product retro new">
+          <div class="product-img">
+            <span class="badge ">New</span>
+            <button class="heart" aria-label="Save to wishlist">♡</button>
+            <img src="images/store/retro-1999-home.jpg" alt="Retro 1999 Home Shirt">
+          </div>
+          <div class="product-info">
+            <h3>Retro 1999 Home Shirt</h3>
+            <p class="rating">★★★★★ <span>4.9</span></p>
+            <p class="price"><span class="now">£60.00</span></p>
+            <button class="add-btn">Add to basket</button>
+          </div>
+        </article>
+
+        <article class="product retro">
+          <div class="product-img">
+            
+            <button class="heart" aria-label="Save to wishlist">♡</button>
+            <img src="images/store/retro-1992-away.jpg" alt="Retro 1992-94 Away Shirt">
+          </div>
+          <div class="product-info">
+            <h3>Retro 1992-94 Away Shirt</h3>
+            <p class="rating">★★★★★ <span>4.4</span></p>
+            <p class="price"><span class="now">£60.00</span></p>
+            <button class="add-btn">Add to basket</button>
+          </div>
+        </article>
+
+        <article class="product jerseys">
+          <div class="product-img">
+            
+            <button class="heart" aria-label="Save to wishlist">♡</button>
+            <img src="images/store/kids-home-jersey.jpg" alt="Kids Home Jersey">
+          </div>
+          <div class="product-info">
+            <h3>Kids Home Jersey</h3>
+            <p class="rating">★★★★★ <span>4.7</span></p>
+            <p class="price"><span class="now">£60.00</span></p>
+            <button class="add-btn">Add to basket</button>
+          </div>
+        </article>
+
+        <article class="product trainingwear sale">
+          <div class="product-img">
+            <span class="badge sale">-40%</span>
+            <button class="heart" aria-label="Save to wishlist">♡</button>
+            <img src="images/store/track-top.jpg" alt="Track Top">
+          </div>
+          <div class="product-info">
+            <h3>Track Top</h3>
+            <p class="rating">★★★★★ <span>4.7</span></p>
+            <p class="price"><span class="now">£45.00</span> <del>£75.00</del></p>
+            <button class="add-btn">Add to basket</button>
+          </div>
+        </article>
+
+        <article class="product trainingwear new">
+          <div class="product-img">
+            <span class="badge ">New</span>
+            <button class="heart" aria-label="Save to wishlist">♡</button>
+            <img src="images/store/training-jacket.jpg" alt="Training Jacket">
+          </div>
+          <div class="product-info">
+            <h3>Training Jacket</h3>
+            <p class="rating">★★★★★ <span>4.8</span></p>
+            <p class="price"><span class="now">£120.00</span></p>
+            <button class="add-btn">Add to basket</button>
+          </div>
+        </article>
+
+        <article class="product accessories">
+          <div class="product-img">
+            
+            <button class="heart" aria-label="Save to wishlist">♡</button>
+            <img src="images/store/scarf.jpg" alt="Match-Day Scarf">
+          </div>
+          <div class="product-info">
+            <h3>Match-Day Scarf</h3>
+            <p class="rating">★★★★★ <span>4.9</span></p>
+            <p class="price"><span class="now">£20.00</span></p>
+            <button class="add-btn">Add to basket</button>
+          </div>
+        </article>
+
+        <article class="product accessories sale">
+          <div class="product-img">
+            <span class="badge sale">-25%</span>
+            <button class="heart" aria-label="Save to wishlist">♡</button>
+            <img src="images/store/duffel-bag.jpg" alt="Duffel Bag">
+          </div>
+          <div class="product-info">
+            <h3>Duffel Bag</h3>
+            <p class="rating">★★★★★ <span>4.5</span></p>
+            <p class="price"><span class="now">£30.00</span> <del>£40.00</del></p>
+            <button class="add-btn">Add to basket</button>
+          </div>
+        </article>
+
+        <article class="product accessories new">
+          <div class="product-img">
+            <span class="badge ">New</span>
+            <button class="heart" aria-label="Save to wishlist">♡</button>
+            <img src="images/store/cap.jpg" alt="Red Devils Cap">
+          </div>
+          <div class="product-info">
+            <h3>Red Devils Cap</h3>
+            <p class="rating">★★★★★ <span>4.6</span></p>
+            <p class="price"><span class="now">£25.00</span></p>
+            <button class="add-btn">Add to basket</button>
+          </div>
+        </article>
+
+        <article class="product accessories">
+          <div class="product-img">
+            
+            <button class="heart" aria-label="Save to wishlist">♡</button>
+            <img src="images/store/mug.jpg" alt="Stadium Mug">
+          </div>
+          <div class="product-info">
+            <h3>Stadium Mug</h3>
+            <p class="rating">★★★★★ <span>4.3</span></p>
+            <p class="price"><span class="now">£12.00</span></p>
+            <button class="add-btn">Add to basket</button>
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- 2. Promo strip -->
-    <div class="promo">Free delivery over $100 &nbsp;•&nbsp; Retro 1999 shirt is back &nbsp;•&nbsp; Kids range now live</div>
-
-    <!-- 3. Toolbar: filters, search, sort -->
-    <section class="container toolbar">
-      <div class="filters" id="filters">
-        <button class="pill active" data-cat="all">All</button>
-        <button class="pill" data-cat="Kits">Kits</button>
-        <button class="pill" data-cat="Accessories">Accessories</button>
-        <button class="pill" data-cat="Kids">Kids</button>
-      </div>
-      <input id="search" type="search" placeholder="Search products...">
-      <select id="sort" aria-label="Sort products">
-        <option value="featured">Featured</option>
-        <option value="low">Price: low to high</option>
-        <option value="high">Price: high to low</option>
-        <option value="az">Name: A to Z</option>
-      </select>
-    </section>
-
-    <!-- 4. Product grid (filled by js/store.js) -->
+    <!-- 5. Shop by collection -->
     <section class="container">
-      <p class="count" id="count"></p>
-      <div class="grid" id="grid"></div>
+      <div class="section-head"><h2>Shop by Collection</h2></div>
+      <div class="collection-grid">
+        <a href="#products" class="collection">
+          <img src="images/store/col-retro.jpg" alt="Retro">
+          <span>Retro</span>
+        </a>
+        <a href="#products" class="collection">
+          <img src="images/store/col-sale.jpg" alt="Sale">
+          <span>Sale</span>
+        </a>
+        <a href="#products" class="collection">
+          <img src="images/store/col-home.jpg" alt="Home Kit">
+          <span>Home Kit</span>
+        </a>
+        <a href="#products" class="collection">
+          <img src="images/store/col-away.jpg" alt="Away Kit">
+          <span>Away Kit</span>
+        </a>
+        <a href="#products" class="collection">
+          <img src="images/store/col-third.jpg" alt="Third Kit">
+          <span>Third Kit</span>
+        </a>
+        <a href="#products" class="collection">
+          <img src="images/store/col-training.jpg" alt="Trainingwear">
+          <span>Trainingwear</span>
+        </a>
+      </div>
     </section>
 
-    <!-- 5. Basket button + drawer -->
-    <button class="cart-fab" id="cartBtn" aria-label="Open basket">🛒 <span id="cartCount">0</span></button>
-    <div class="overlay" id="overlay"></div>
-    <aside class="drawer" id="drawer" aria-label="Basket">
-      <div class="drawer-head"><h2>Your Basket</h2><button id="closeCart" aria-label="Close basket">✕</button></div>
-      <div class="drawer-items" id="cartItems"></div>
-      <div class="drawer-foot">
-        <div class="promo-row"><input id="promo" placeholder="Promo code"><button class="btn small" id="applyPromo">Apply</button></div>
-        <div class="row"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
-        <div class="row" id="discountRow" hidden><span>Discount (RED10)</span><span id="discount">-$0.00</span></div>
-        <div class="row total"><span>Total</span><span id="total">$0.00</span></div>
-        <button class="btn full" id="checkout">Checkout</button>
-        <button class="link" id="clearCart">Clear basket</button>
+    <!-- 6. Trust strip -->
+    <section class="trust">
+      <div class="container trust-grid">
+        <div><strong>Free shipping</strong><span>On qualifying orders</span></div>
+        <div><strong>100% Official</strong><span>Merchandise only</span></div>
+        <div><strong>30 Day Returns</strong><span>Easy and simple</span></div>
+        <div><strong>Members save 10%</strong><span>Join for free</span></div>
       </div>
-    </aside>
-    <div class="toast" id="toast" role="status"></div>
+    </section>
 
   </main>
   <!-- ===== YOUR PAGE ENDS HERE ===== -->
 
   <!-- ===== FOOTER: DO NOT EDIT (lead only) ===== -->
   <footer class="site-footer">
-    Copyright © 2026 Manchester United. web and mobile application class. All rights reserved.
+    Practice project for learning. Not affiliated with Manchester United.
   </footer>
   <!-- ===== END FOOTER ===== -->
 
