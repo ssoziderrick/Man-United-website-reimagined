@@ -1,4 +1,3 @@
-// Gall
 		const playerNames = [
 			"Bruno Fernandes", "Marcus Rashford", "Alejandro Garnacho", "Kobbie Mainoo",
 			"Mason Mount", "Amad Diallo", "Lisandro Martinez", "Andre Onana",
@@ -54,6 +53,8 @@
 		let activeIndex = 0;
 		let lastFocusedElement = null;
 		const imageCache = new Map();
+		const imageQueue = [];
+		let activeImageRequests = 0;
 
 		function imageUrl(item) {
 			if (item.wiki) {
@@ -63,19 +64,47 @@
 			return `https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${query}&gsrnamespace=6&gsrlimit=1&prop=imageinfo&iiprop=url&iiurlwidth=1000&format=json&origin=*`;
 		}
 
+		function fetchImageData(url) {
+			return new Promise((resolve, reject) => {
+				imageQueue.push({ url, resolve, reject });
+				processImageQueue();
+			});
+		}
+
+		function processImageQueue() {
+			while (activeImageRequests < 1 && imageQueue.length) {
+				const request = imageQueue.shift();
+				activeImageRequests += 1;
+				fetch(request.url)
+					.then(async (response) => {
+						if (response.status === 429) {
+							const retryAfter = Number(response.headers.get("Retry-After")) || 1;
+							await new Promise((resolve) => setTimeout(resolve, Math.min(retryAfter * 1000, 5000)));
+							response = await fetch(request.url);
+						}
+						if (!response.ok) throw new Error(`Image lookup failed (${response.status})`);
+						return response.json();
+					})
+					.then(request.resolve, request.reject)
+					.finally(() => {
+						activeImageRequests -= 1;
+						processImageQueue();
+					});
+			}
+		}
+
 		async function getImage(item) {
 			if (imageCache.has(item.name)) return imageCache.get(item.name);
 			try {
-				const response = await fetch(imageUrl(item));
-				if (!response.ok) throw new Error("Image lookup failed");
-				const data = await response.json();
+				const data = await fetchImageData(imageUrl(item));
 				const url = item.wiki
 					? data.thumbnail?.source
 					: Object.values(data.query?.pages || {})[0]?.imageinfo?.[0]?.thumburl;
 				if (!url) throw new Error("No image found");
 				imageCache.set(item.name, url);
 				return url;
-			} catch {
+			} catch (error) {
+				console.warn(`Could not load gallery image for ${item.name}.`, error);
 				return "";
 			}
 		}
@@ -172,7 +201,19 @@
 			if (event.key === "Escape") closeLightbox();
 			if (event.key === "ArrowLeft") showImage(activeIndex - 1);
 			if (event.key === "ArrowRight") showImage(activeIndex + 1);
+			if (event.key === "Tab") {
+				const controls = [...lightbox.querySelectorAll("button:not(:disabled)")];
+				const firstControl = controls[0];
+				const lastControl = controls[controls.length - 1];
+
+				if (event.shiftKey && document.activeElement === firstControl) {
+					event.preventDefault();
+					lastControl.focus();
+				} else if (!event.shiftKey && document.activeElement === lastControl) {
+					event.preventDefault();
+					firstControl.focus();
+				}
+			}
 		});
 
 		renderGallery("players");
-	ery page scripts - owned by the person assigned in README.md
