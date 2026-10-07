@@ -1,13 +1,3 @@
-// store.js - STORE page only.
-// Four small features:
-//   1. filter buttons   2. basket count + total price   3. clear basket   4. heart buttons
-// The prices are written in the HTML (e.g. "Ugx 200,000"). JS reads them from there.
-
-
-// =====================================================
-// FEATURE 1: FILTER BUTTONS
-// (these only do something if filter buttons are on the page)
-// =====================================================
 
 // find the things we need on the page
 const filterButtons = document.querySelectorAll(".filter-btn");
@@ -106,40 +96,3 @@ for (let i = 0; i < addButtons.length; i++) {
 }
 
 
-// =====================================================
-// FEATURE 3: CLEAR BASKET BUTTON
-// =====================================================
-
-const clearButton = document.getElementById("clear-basket");
-
-// the "if" is just in case the button is missing from the HTML
-if (clearButton !== null) {
-  clearButton.addEventListener("click", function () {
-    items = 0;
-    total = 0;
-    updateBasket();
-  });
-}
-
-
-// =====================================================
-// FEATURE 4: HEART (WISHLIST) BUTTONS
-// =====================================================
-
-const hearts = document.querySelectorAll(".heart");
-
-for (let i = 0; i < hearts.length; i++) {
-
-  hearts[i].addEventListener("click", function () {
-
-    // toggle = add the class if it is not there, remove it if it is
-    hearts[i].classList.toggle("liked");
-
-    // change the symbol: empty heart or full heart
-    if (hearts[i].classList.contains("liked")) {
-      hearts[i].textContent = "♥";
-    } else {
-      hearts[i].textContent = "♡";
-    }
-  });
-}
