@@ -1,63 +1,423 @@
-/* store.css - STORE page only. Colours come from base.css (var(--red) etc.) */
 
-/* ---------- 1. Promo bar ---------- */
-.promo-bar{background:var(--black);color:var(--gold);text-align:center;padding:10px;font-size:.9rem;font-weight:600}
+/* ===== 1. PROMO BAR (thin black strip) ===== */
+.promo-bar {
+  background: var(--black);
+  color: var(--gold);
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
 
-/* ---------- 3. Hero ---------- */
-.hero-grid{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:16px;margin-top:24px}
-.hero-main{grid-row:1 / 3;position:relative;min-height:340px;border-radius:12px;overflow:hidden}
-.hero-main img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero-text{position:absolute;left:0;bottom:0;padding:28px;color:var(--white);background:linear-gradient(to top,rgba(0,0,0,.75),transparent);width:100%}
-.hero-text h1{font-size:2.4rem}
-.hero-text p{margin:6px 0 14px}
-.hero-tile{position:relative;border-radius:12px;overflow:hidden;min-height:160px}
-.hero-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.hero-tile:hover img{transform:scale(1.06)}
-.hero-tile span{position:absolute;left:14px;bottom:12px;background:var(--white);color:var(--black);padding:6px 12px;border-radius:6px;font-weight:700}
 
-/* ---------- 4. Products ---------- */
-.section-head{display:flex;justify-content:space-between;align-items:baseline;margin:40px 0 16px}
-.section-head h2{font-size:1.7rem}
-.section-head p{color:#777}
-.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
-.product{background:var(--white);border:1px solid #eee;border-radius:10px;overflow:hidden;transition:.25s}
-.product:hover{box-shadow:0 10px 24px rgba(0,0,0,.15);transform:translateY(-4px)}
-.product.hidden{display:none}
-.product-img{position:relative;aspect-ratio:6 / 7;background:var(--grey);overflow:hidden}
-.product-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.product:hover .product-img img{transform:scale(1.05)}
-.badge{position:absolute;top:10px;left:10px;z-index:1;background:var(--black);color:var(--white);font-size:.75rem;font-weight:700;padding:3px 10px;border-radius:4px}
-.badge.sale{background:var(--red)}
-.heart{position:absolute;top:8px;right:8px;z-index:1;background:var(--white);border:0;width:34px;height:34px;border-radius:50%;font-size:1.2rem;cursor:pointer;color:var(--red)}
-.heart.liked{background:var(--red);color:var(--white)}
-.product-info{padding:14px}
-.product-info h3{font-size:1rem;margin-bottom:4px}
-.rating{color:#f5a623;font-size:.85rem}
-.rating span{color:#666}
-.price{margin:6px 0 12px}
-.now{font-size:1.15rem;font-weight:800}
-.price del{color:#999;margin-left:4px}
-.add-btn{width:100%;background:var(--red);color:var(--white);border:0;padding:10px;border-radius:6px;font:inherit;font-weight:700;cursor:pointer}
-.add-btn:hover{background:var(--red-dark)}
+/* ===== 2. BASKET BAR (basket on the RIGHT) ===== */
+.category-bar {
+  position: sticky;            /* stays at the top when you scroll */
+  top: 0;
+  z-index: 10;                 /* makes sure it stays on top of other things */
+  display: flex;
+  justify-content: flex-end; /* flex-start = left, flex-end = right */
+  background: var(--white);
+  border-bottom: 1px solid #dddddd;
+  padding: 10px 24px;
+}
 
-/* ---------- 5. Collections ---------- */
-.collection-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.collection{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:3 / 2}
-.collection img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.collection:hover img{transform:scale(1.08)}
-.collection span{position:absolute;left:0;right:0;bottom:0;padding:14px;color:var(--white);font-weight:800;font-size:1.2rem;background:linear-gradient(to top,rgba(0,0,0,.7),transparent)}
+.basket {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--black);
+  cursor: pointer;
+}
 
-/* ---------- 6. Trust strip ---------- */
-.trust{background:var(--grey);margin-top:48px;padding:28px 0}
-.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center}
-.trust-grid div{display:flex;flex-direction:column;gap:2px;font-size:1.6rem}
-.trust-grid strong{font-size:1rem}
-.trust-grid span{font-size:.85rem;color:#666}
+.basket:hover {
+  color: var(--red);
+}
 
-/* ---------- Mobile ---------- */
-@media(max-width:800px){
-  .hero-grid{grid-template-columns:1fr;grid-template-rows:auto}
-  .hero-main{grid-row:auto}
-  .collection-grid{grid-template-columns:repeat(2,1fr)}
-  .trust-grid{grid-template-columns:repeat(2,1fr)}
+/* the cart icon and the little number on its corner */
+.basket-icon {
+  position: relative;          
+  display: inline-flex;
+}
+
+.basket-badge {
+  position: absolute;
+  top: -8px;
+  right: -12px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  background: var(--red);
+  color: var(--white);
+  border-radius: 999px;        
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 20px;
+}
+
+
+.hero-full {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  min-height: 360px;
+  overflow: hidden;
+}
+
+.hero-full img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* the text sits on top of the picture, at the bottom */
+.hero-text {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 40px 6%;
+  color: var(--white);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+}
+
+.hero-text h1 {
+  font-size: 48px;
+}
+
+.hero-text p {
+  margin: 6px 0 14px 0;
+}
+
+
+/* ===== 3b. OLD HERO LAYOUT (big picture + two small tiles) ===== */
+/* kept in case you want the tiles back later */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.hero-main {
+  grid-row: 1 / 3;             /* this box covers both rows */
+  position: relative;
+  min-height: 340px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.hero-main img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-tile {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 160px;
+}
+
+.hero-tile img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s;
+}
+
+.hero-tile:hover img {
+  transform: scale(1.06);      /* zoom in a little on hover */
+}
+
+.hero-tile span {
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+  background: var(--white);
+  color: var(--black);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+
+/* ===== 4. PRODUCTS ===== */
+
+/* title row: "Trending Kits" */
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 40px 0 16px 0;
+}
+
+.section-head h2 {
+  font-size: 27px;
+}
+
+.section-head p {
+  color: #777777;
+}
+
+/* the grid: 4 products in each row */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);   /* 4 equal columns */
+  gap: 20px;
+}
+
+/* one product card */
+.product {
+  background: var(--white);
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.25s;
+}
+
+.product:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);             /* card moves up a little */
+}
+
+/* JS adds this class to hide a product */
+.product.hidden {
+  display: none;
+}
+
+/* picture area of the card */
+.product-img {
+  position: relative;          /* so the badge and heart can sit on top */
+  height: 300px;
+  background: var(--grey);
+  overflow: hidden;
+}
+
+.product-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s;
+}
+
+.product:hover .product-img img {
+  transform: scale(1.05);
+}
+
+/* the "New" label, top left */
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  background: var(--black);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+.badge.sale {
+  background: var(--red);
+}
+
+/* the heart button, top right */
+.heart {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+  background: var(--white);
+  border: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 19px;
+  cursor: pointer;
+  color: var(--red);
+}
+
+/* JS adds "liked" when you click the heart */
+.heart.liked {
+  background: var(--red);
+  color: var(--white);
+}
+
+/* text part of the card */
+.product-info {
+  padding: 14px;
+}
+
+.product-info h3 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.rating {
+  color: #f5a623;
+  font-size: 14px;
+}
+
+.rating span {
+  color: #666666;
+}
+
+.price {
+  margin: 6px 0 12px 0;
+}
+
+.now {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.price del {
+  color: #999999;
+  margin-left: 4px;
+}
+
+.add-btn {
+  width: 100%;
+  background: var(--red);
+  color: var(--white);
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background: var(--red-dark);
+}
+
+
+/* ===== 5. COLLECTIONS ===== */
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.collection {
+  position: relative;
+  height: 220px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.collection img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s;
+}
+
+.collection:hover img {
+  transform: scale(1.08);
+}
+
+.collection span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 14px;
+  color: var(--white);
+  font-weight: bold;
+  font-size: 19px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+}
+
+
+/* ===== 6. TRUST STRIP (grey box with 4 points) ===== */
+.trust {
+  background: var(--grey);
+  margin-top: 48px;
+  padding: 28px 0;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  text-align: center;
+}
+
+.trust-grid div {
+  display: flex;
+  flex-direction: column;      /* stack the lines on top of each other */
+  gap: 2px;
+}
+
+.trust-grid strong {
+  font-size: 16px;
+}
+
+.trust-grid span {
+  font-size: 14px;
+  color: #666666;
+}
+
+
+/* ===== MOBILE AND SMALL SCREENS ===== */
+/* each block only applies when the window is narrower than the number */
+
+@media (max-width: 1000px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);   /* 3 per row */
+  }
+}
+
+@media (max-width: 800px) {
+  .hero-full {
+    height: 60vh;                            /* shorter picture on phones */
+  }
+  .hero-text h1 {
+    font-size: 32px;
+  }
+  .hero-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .hero-main {
+    grid-row: auto;
+  }
+  .collection-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);   /* 2 per row */
+  }
+}
+
+@media (max-width: 450px) {
+  .product-grid {
+    grid-template-columns: 1fr;              /* 1 per row */
+  }
 }
