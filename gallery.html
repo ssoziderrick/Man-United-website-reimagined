@@ -24,6 +24,58 @@
   <!-- ===== END NAV ===== -->
 
   <!-- ===== YOUR PAGE STARTS HERE ===== -->
+   <!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#8f1018">
+	<title>Manchester United | The Gallery</title>
+	<link rel="stylesheet" href="squad.css">
+</head>
+<body>
+	<header class="masthead">
+		<div class="brand"><span class="crest" aria-hidden="true">MUFC</span> Manchester United</div>
+		<span class="masthead-note">The club in pictures</span>
+	</header>
+
+	<main>
+		<section class="intro" aria-labelledby="page-title">
+			<div>
+				<p class="eyebrow">Old Trafford | Est. 1878</p>
+				<h1 id="page-title">The Gallery</h1>
+			</div>
+			<p class="intro-copy">The people, places and moments that make Manchester United.</p>
+		</section>
+
+		<nav class="tabs" role="tablist" aria-label="Gallery categories">
+			<button class="tab" id="tab-players" type="button" role="tab" aria-selected="true" aria-controls="gallery" data-category="players">Players</button>
+			<button class="tab" id="tab-stadium" type="button" role="tab" aria-selected="false" aria-controls="gallery" data-category="stadium">Stadium</button>
+			<button class="tab" id="tab-legends" type="button" role="tab" aria-selected="false" aria-controls="gallery" data-category="legends">Legends</button>
+			<button class="tab" id="tab-trophies" type="button" role="tab" aria-selected="false" aria-controls="gallery" data-category="trophies">Trophies</button>
+			<button class="tab" id="tab-fans" type="button" role="tab" aria-selected="false" aria-controls="gallery" data-category="fans">Fans</button>
+		</nav>
+
+		<div class="gallery-meta">
+			<span id="category-label">First-team favourites</span>
+			<span id="image-count" aria-live="polite"></span>
+		</div>
+		<section class="gallery" id="gallery" role="tabpanel" aria-labelledby="tab-players"></section>
+	</main>
+
+	<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+		<button class="lightbox-button lightbox-close" type="button" aria-label="Close image viewer" data-action="close">&times;</button>
+		<button class="lightbox-button lightbox-prev" type="button" aria-label="Previous image" data-action="previous">&#8249;</button>
+		<img class="lightbox-image" id="lightbox-image" alt="">
+		<button class="lightbox-button lightbox-next" type="button" aria-label="Next image" data-action="next">&#8250;</button>
+		<p class="lightbox-caption" id="lightbox-caption"></p>
+	</div>
+
+	<script src="squad.js" defer></script>
+</body>
+</html>
+
+
   <main class="container">
     <h1>Gallery</h1>
     <p>TODO: replace this with your own design.</p>
